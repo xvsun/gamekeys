@@ -2,9 +2,9 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\GameResource\Pages;
-use App\Filament\Resources\GameResource\RelationManagers;
-use App\Models\Game;
+use App\Filament\Resources\PlatformResource\Pages;
+use App\Filament\Resources\PlatformResource\RelationManagers;
+use App\Models\Platform;
 use Filament\Forms;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
@@ -13,9 +13,9 @@ use Filament\Tables;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class GameResource extends Resource
+class PlatformResource extends Resource
 {
-    protected static ?string $model = Game::class;
+    protected static ?string $model = Platform::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-collection';
 
@@ -26,9 +26,8 @@ class GameResource extends Resource
                 Forms\Components\TextInput::make('name')
                     ->required()
                     ->maxLength(255),
-                    Forms\Components\Select::make('platform_id')
-                    ->relationship('platform', 'name')
-                    ->required(),
+                Forms\Components\TextInput::make('link')
+                    ->maxLength(255),
             ]);
     }
 
@@ -37,7 +36,7 @@ class GameResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('name'),
-                Tables\Columns\TextColumn::make('platform.name'),
+                Tables\Columns\TextColumn::make('link'),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime(),
                 Tables\Columns\TextColumn::make('updated_at')
@@ -65,10 +64,10 @@ class GameResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListGames::route('/'),
-            'create' => Pages\CreateGame::route('/create'),
-            'view' => Pages\ViewGame::route('/{record}'),
-            'edit' => Pages\EditGame::route('/{record}/edit'),
+            'index' => Pages\ListPlatforms::route('/'),
+            'create' => Pages\CreatePlatform::route('/create'),
+            'view' => Pages\ViewPlatform::route('/{record}'),
+            'edit' => Pages\EditPlatform::route('/{record}/edit'),
         ];
     }    
 }

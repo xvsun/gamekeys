@@ -16,11 +16,16 @@ class Game extends Model
      */
     protected $fillable = [
         'name',
-        'platform',
+        'platform_id',
     ];
 
     public function keys()
     {
         return $this->hasMany(Key::class);
+    }
+
+    public function platform()
+    {
+        return $this->belongsTo(Platform::class);
     }
 }

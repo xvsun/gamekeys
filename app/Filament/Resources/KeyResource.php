@@ -38,7 +38,7 @@ class KeyResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('game_id'),
+                Tables\Columns\TextColumn::make('game.name'),
                 Tables\Columns\TextColumn::make('key'),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime(),
