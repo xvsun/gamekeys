@@ -31,6 +31,10 @@ class KeyResource extends Resource
                 Forms\Components\TextInput::make('key')
                     ->required()
                     ->maxLength(255),
+                    Forms\Components\Select::make('user_id')
+                    ->relationship('user', 'name')
+                    ->preload()
+                    ->searchable(),
             ]);
     }
 
