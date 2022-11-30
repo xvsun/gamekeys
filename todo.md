@@ -9,3 +9,5 @@
   - User kann Key wieder freigeben
   - User hat ne Liste an geclaimten Keys
   - wenn User gelöscht - Keys wieder freigeben
+- Notification in Discord
+- Key mit Einlösezeitraum
