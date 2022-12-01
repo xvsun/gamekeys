@@ -10,7 +10,8 @@
   - User kann Key wieder freigeben
   - User hat ne Liste an geclaimten Keys
   - wenn User gelöscht - Keys wieder freigeben
-  - Plattform an Key binden
-- Notification in Discord
-- Key mit Einlösezeitraum
+  - Notification in Discord
+  - Key mit Einlösezeitraum
+- Game
+- Bilder und Beschreibung, Link zum Game?
 
