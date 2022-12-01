@@ -16,5 +16,7 @@ class DevelopmentSeeder extends Seeder
     {
         $this->call(UserSeeder::class);
         $this->call(PlatformSeeder::class);
+        $this->call(GameSeeder::class);
+        $this->call(KeySeeder::class);
     }
 }
