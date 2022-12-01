@@ -33,7 +33,7 @@ class PlatformSeeder extends Seeder
                 'updated_at' => Carbon::now(),
             ],
             [
-                'name' => 'Ubisoft',
+                'name' => 'Ubisoft Connect',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ]
