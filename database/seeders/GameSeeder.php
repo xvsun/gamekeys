@@ -23,19 +23,15 @@ class GameSeeder extends Seeder
         $data = [
             [
                 'name' => 'The Forest',
-                'platform_id' => Platform::where('name', 'Steam')->firstOrFail()->id,
             ],
             [
                 'name' => 'Starbound',
-                'platform_id' => Platform::where('name', 'Steam')->firstOrFail()->id,
             ],
             [
                 'name' => 'Far Cry 5',
-                'platform_id' => Platform::where('name', 'Ubisoft Connect')->firstOrFail()->id,
             ],
             [
                 'name' => 'Cyberpunk 2077',
-                'platform_id' => Platform::where('name', 'Steam')->firstOrFail()->id,
             ],
         ];
 

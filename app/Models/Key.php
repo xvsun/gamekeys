@@ -10,7 +10,8 @@ class Key extends Model
     use HasFactory;
     protected $fillable = [
         'key',
-        'game_id'
+        'game_id',
+        'platform_id',
     ];
 
 
@@ -22,5 +23,9 @@ class Key extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+    public function platform()
+    {
+        return $this->belongsTo(Platform::class);
     }
 }

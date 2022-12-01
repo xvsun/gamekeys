@@ -28,6 +28,9 @@ class KeyResource extends Resource
                     ->preload()
                     ->searchable()
                     ->required(),
+                Forms\Components\Select::make('platform_id')
+                    ->relationship('platform', 'name')
+                    ->required(),
                 Forms\Components\TextInput::make('key')
                     ->required()
                     ->maxLength(255),
@@ -43,6 +46,7 @@ class KeyResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('game.name'),
+                Tables\Columns\TextColumn::make('platform.name'),
                 Tables\Columns\TextColumn::make('key'),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime(),

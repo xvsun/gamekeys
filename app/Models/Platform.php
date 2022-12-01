@@ -13,10 +13,8 @@ class Platform extends Model
         'name',
         'link'
     ];
-
-    public function games()
+    public function keys()
     {
-        return $this->hasMany(Game::class);
+        return $this->hasMany(Key::class);
     }
-
 }

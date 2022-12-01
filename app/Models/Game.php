@@ -16,7 +16,6 @@ class Game extends Model
      */
     protected $fillable = [
         'name',
-        'platform_id',
     ];
 
     public function keys()
@@ -24,8 +23,4 @@ class Game extends Model
         return $this->hasMany(Key::class);
     }
 
-    public function platform()
-    {
-        return $this->belongsTo(Platform::class);
-    }
 }

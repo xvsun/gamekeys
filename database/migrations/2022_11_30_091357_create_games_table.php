@@ -16,7 +16,6 @@ return new class extends Migration
         Schema::create('games', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->foreignId('platform_id')->constrained()->cascadeOnDelete();
             $table->timestamps();
         });
     }
