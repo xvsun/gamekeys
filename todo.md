@@ -13,5 +13,5 @@
   - Notification in Discord
   - Key mit Einlösezeitraum
 - Game
-- Bilder und Beschreibung, Link zum Game?
+- Bilder und Beschreibung, Link zum Game? via isthereanydeal
 
