@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Http;
 use App\Http\Requests\StoreGameRequest;
 use App\Http\Requests\UpdateGameRequest;
+use App\Http\Controllers\Log;
 use App\Models\Game;
 use Inertia\Inertia;
 
@@ -17,12 +18,16 @@ class GameController extends Controller
      */
     public function index()
     {
-        $games = Game::all()->map(function($game) {
+
+        $games = Game::all()->map(function ($game) {
             $game->key_amount = $game->keys()->count();
             $game->key_platforms = $game->keys()->get()->map(function ($key) {
                 return $key->platform->name;
             })->toArray();
-            $this->getPicture($game);
+            if (is_null($game->image_url)) {
+                $this->getPicture($game);
+            }
+            $game->save();
 
             return $game;
         });
@@ -31,46 +36,46 @@ class GameController extends Controller
             'test' => 1,
             //dd($games)
         ]);
-    
     }
+
     public function getPicture(Game $game)
     {
         $plain = '';
-        $api_key =env('ITAD_API_KEY');
+        $api_key = env('ITAD_API_KEY');
         // get plain from isthereanydeal api
         $response = Http::get('https://api.isthereanydeal.com/v02/game/plain/?', [
-            'key' => $api_key, 
+            'key' => $api_key,
             'title' => $game->name,
         ]);
 
-        
         if ($response->successful()) {
-            // todo i.e get the response body save the date etc.#
+            // get plain from response
             $data = $response->json()['data'];
-            $plain = $data['plain'];
-            
-        } else {
-            // todo i.e schedule to try again later etc.
-            
-        }
-        
-        // use plain to get image url
-        $response = Http::get('https://api.isthereanydeal.com/v01/game/info/?', [
-            'key' => $api_key,
-            'plains' => $plain, 
-        ]);
-        
-        // Determine if the status code is >= 200 and < 300...
-        if ($response->successful()) {
-            // todo i.e get the response body save the date etc.#
-            $data = $response->json()['data'];
-            $game->picture_url = $data[$plain]['image'];
-            $game->save();
-    
-        } else {
-            // todo i.e schedule to try again later etc.
-        }
 
+            if (empty($response->json()['data'])) {
+                // JSON output is empty
+                $game->image_url = asset('storage/images/kein_Bild.png');
+            } else {
+                // JSON output is not empty
+                $plain = $data['plain'];
+
+                // use plain to get image url
+
+                $response = Http::get('https://api.isthereanydeal.com/v01/game/info/?', [
+                    'key' => $api_key,
+                    'plains' => $plain,
+                ]);
+
+                if ($response->successful()) {
+                    // get image assign to image_url
+                    $data = $response->json()['data'];
+                    $game->image_url = $data[$plain]['image'];
+                } else {
+                    // Platzhalter Bild
+                    $game->image_url = asset('storage/images/kein_Bild.png');
+                }
+            }
+        }
     }
     /**
      * Show the form for creating a new resource.

@@ -26,7 +26,7 @@ class GameResource extends Resource
                 Forms\Components\TextInput::make('name')
                     ->required()
                     ->maxLength(255),
-                Forms\Components\TextInput::make('picture_url')
+                Forms\Components\TextInput::make('image_url')
                     ->maxLength(255),
             ]);
     }
@@ -36,7 +36,7 @@ class GameResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('name'),
-                Tables\Columns\TextColumn::make('picture_url'),
+                Tables\Columns\TextColumn::make('image_url'),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime(),
                 Tables\Columns\TextColumn::make('updated_at')
@@ -53,14 +53,14 @@ class GameResource extends Resource
                 Tables\Actions\DeleteBulkAction::make(),
             ]);
     }
-    
+
     public static function getRelations(): array
     {
         return [
             //
         ];
     }
-    
+
     public static function getPages(): array
     {
         return [
@@ -69,5 +69,5 @@ class GameResource extends Resource
             'view' => Pages\ViewGame::route('/{record}'),
             'edit' => Pages\EditGame::route('/{record}/edit'),
         ];
-    }    
+    }
 }

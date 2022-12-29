@@ -34,7 +34,7 @@ class KeyResource extends Resource
                 Forms\Components\TextInput::make('key')
                     ->required()
                     ->maxLength(255),
-                    Forms\Components\Select::make('user_id')
+                Forms\Components\Select::make('user_id')
                     ->relationship('user', 'name')
                     ->preload()
                     ->searchable(),
@@ -64,14 +64,14 @@ class KeyResource extends Resource
                 Tables\Actions\DeleteBulkAction::make(),
             ]);
     }
-    
+
     public static function getRelations(): array
     {
         return [
             //
         ];
     }
-    
+
     public static function getPages(): array
     {
         return [
@@ -80,5 +80,5 @@ class KeyResource extends Resource
             'view' => Pages\ViewKey::route('/{record}'),
             'edit' => Pages\EditKey::route('/{record}/edit'),
         ];
-    }    
+    }
 }
