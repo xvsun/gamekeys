@@ -23,7 +23,8 @@ class GameSeeder extends Seeder
         $data = [
             [
                 'name' => 'The Forest',
-            ],
+                'picture_url' => 'https://steamcdn-a.akamaihd.net/steam/apps/242760/header.jpg',
+            ], 
             [
                 'name' => 'Starbound',
             ],

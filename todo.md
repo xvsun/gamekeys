@@ -13,5 +13,8 @@
   - Notification in Discord
   - Key mit Einlösezeitraum
 - Game
-- Bilder und Beschreibung, Link zum Game? via isthereanydeal
+  - Bilder und Beschreibung, Link zum Game? via isthereanydeal
+  - aktuell muss key_amount im Game Model sein temporäres Attribut klappt nicht (public $key_amount) mit Index.vue -> fixbar oder so in Ordnung?
+  - Bedingung einbauen, dass bei vorhandenen Bild keine neue Abfrage gemacht werden muss
+
 

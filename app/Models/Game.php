@@ -16,11 +16,14 @@ class Game extends Model
      */
     protected $fillable = [
         'name',
+        'picture_url',
     ];
 
     public function keys()
     {
         return $this->hasMany(Key::class);
     }
+    public $key_platforms;
+
 
 }
