@@ -29,14 +29,14 @@ class GameController extends Controller
         return Inertia::render('Games/Index', [
             'games' => $games,
             'test' => 1,
-            dd($games)
+            //dd($games)
         ]);
     
     }
     public function getPicture(Game $game)
     {
         $plain = '';
-        $api_key ='1f649c2d3d6c25203eb7c2569bfe13e28e9e978a';
+        $api_key =env('ITAD_API_KEY');
         // get plain from isthereanydeal api
         $response = Http::get('https://api.isthereanydeal.com/v02/game/plain/?', [
             'key' => $api_key, 
