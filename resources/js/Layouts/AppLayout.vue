@@ -56,6 +56,7 @@ const logout = () => {
                                 <NavLink :href="route('games.index')" :active="route().current('games.index')">
                                     Games
                                 </NavLink>
+                                <a :href="route('filament.pages.dashboard')" class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition">Admin</a>
                             </div>
                         </div>
 
@@ -211,6 +212,7 @@ const logout = () => {
                         <ResponsiveNavLink :href="route('games.index')" :active="route().current('games.index')">
                             Games
                         </ResponsiveNavLink>
+                        <a :href="route('filament.pages.dashboard')" class="block pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-gray-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-gray-300 transition">Admin</a>
                     </div>
 
                     <!-- Responsive Settings Options -->

@@ -4,6 +4,7 @@
   - Filterfunktion (nach Plattform)
   - Suchfunktion (nach Game)
   - Liste Games (Bild|Name|Plattform|Anzahl Keys)
+  - Key Wünsche einbauen^ / Wishlist?
 - Claim Funktion
   - Limit 3 pro Tag
   - Claim Button

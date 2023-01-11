@@ -23,5 +23,4 @@ class Game extends Model
     {
         return $this->hasMany(Key::class);
     }
-    public $key_platforms;
 }
