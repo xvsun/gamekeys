@@ -11,5 +11,6 @@
   - wenn User gelöscht - Keys wieder freigeben
   - Notification in Discord
   - Key mit Einlösezeitraum
+  - Verlinkung zu istheranydeal
 - Game
   - Bilder und Beschreibung, Link zum Game? via isthereanydeal
