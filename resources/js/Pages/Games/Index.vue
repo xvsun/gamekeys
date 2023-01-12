@@ -1,7 +1,9 @@
 <script setup>
 import AppLayout from '@/Layouts/AppLayout.vue';
-import { ref,watch } from "vue";
+import { ref, watch } from "vue";
 import {Inertia} from "@inertiajs/inertia";
+import TextInput from '@/Components/TextInput.vue';
+import debounce from 'lodash/debounce';
 
 let props = defineProps({
     games: Object,
@@ -10,15 +12,14 @@ let props = defineProps({
 
 let search = ref(props.filters.search);
 
-watch(search, value =>{
-    
-    Inertia.get('/games', {
-        search: value,
-    }, {
+// watch, watches the ref and executes the throttle function everytime title changes
+// debounce only makes the function execute once, after the value (300ms) has passed
+watch(search, debounce(function (value) { 
+    Inertia.get('/games', { search: value }, {
         preserveState: true,
-        replace: true,
+        replace: true, // replace the search history so there is no history entry for each keystroke
     });
-}) 
+}, 300));
 </script>
 
 <template>
@@ -32,8 +33,15 @@ watch(search, value =>{
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="flex justify-end mb-4">
-                    <input v-model="search" type="text" placeholder ="Search...">
-                    
+                    <TextInput
+                        id="search"
+                        v-model="search"
+                        type="text"
+                        class="w-full mx-2 sm:mx-0 sm:w-1/3 md:w-1/4"
+                        required
+                        autofocus
+                        placeholder ="Search..."
+                    />
                 </div>
                 <!-- <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg"> -->
                 <!-- Code -->
