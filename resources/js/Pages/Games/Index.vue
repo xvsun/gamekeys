@@ -20,6 +20,10 @@ watch(search, debounce(function (value) {
         replace: true, // replace the search history so there is no history entry for each keystroke
     });
 }, 300));
+
+const handleGameClick = ((id) => {
+    Inertia.visit(route('games.show', id));
+});
 </script>
 
 <template>
@@ -47,7 +51,7 @@ watch(search, debounce(function (value) {
                 <!-- Code -->
 
                 <div class="grid grid-cols-1 sm:grid-cols-3 px-2 sm:p-0 gap-4">
-                    <div v-for="game, game_key in games" :key="game_key"
+                    <div @click="handleGameClick(game.id)" v-for="game, game_key in games" :key="game_key"
                         class="bg-white rounded-lg shadow-lg overflow-hidden space-y-2">
                         <div class="w-100 h-100 relative">
                             <img :src="game.image_url" alt="">
