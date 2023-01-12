@@ -40,7 +40,7 @@ class GetGameImage implements ShouldQueue
     public function handle()
     {
         $plain = '';
-        $api_key = env('ITAD_API_KEY');
+        $api_key = config('services.itad.key');
         // get plain from isthereanydeal api
         $response = Http::get('https://api.isthereanydeal.com/v02/game/plain/?', [
             'key' => $api_key,
