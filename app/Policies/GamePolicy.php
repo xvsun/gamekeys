@@ -18,7 +18,7 @@ class GamePolicy
      */
     public function viewAny(User $user)
     {
-        return true;
+        return $user->can('view_any_game');
     }
 
     /**
@@ -30,7 +30,7 @@ class GamePolicy
      */
     public function view(User $user, Game $game)
     {
-        return true;
+        return $user->can('view_game');
     }
 
     /**
@@ -41,7 +41,7 @@ class GamePolicy
      */
     public function create(User $user)
     {
-        return true;
+        return $user->can('create_game');
     }
 
     /**
@@ -53,7 +53,7 @@ class GamePolicy
      */
     public function update(User $user, Game $game)
     {
-        return true;
+        return $user->can('update_game');
     }
 
     /**
@@ -65,7 +65,7 @@ class GamePolicy
      */
     public function delete(User $user, Game $game)
     {
-        return true;
+        return $user->can('delete_game');
     }
 
     /**
@@ -77,7 +77,7 @@ class GamePolicy
      */
     public function restore(User $user, Game $game)
     {
-        return true;
+        return $user->can('restore_game');
     }
 
     /**
@@ -89,6 +89,6 @@ class GamePolicy
      */
     public function forceDelete(User $user, Game $game)
     {
-        return true;
+        return $user->can('force_delete_game');
     }
 }
