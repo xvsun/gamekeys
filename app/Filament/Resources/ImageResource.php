@@ -34,10 +34,6 @@ class ImageResource extends Resource
                         $displayOptions = [];
                         $options = ImageTypeEnum::options();
 
-                        if (! $livewire instanceof Pages\CreateImage) {
-                            $displayOptions[$record->slug] = $record->slug;
-                        }
-
                         $names = Image::all()->pluck('name');
                         foreach ($options as $optionKey => $option) {
                             if (! $livewire instanceof Pages\CreateImage) {
