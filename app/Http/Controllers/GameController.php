@@ -9,7 +9,9 @@ use App\Http\Requests\UpdateGameRequest;
 use App\Http\Controllers\Log;
 use App\Models\Game;
 use App\Models\Image;
+use Illuminate\Support\Facades\Request;
 use Inertia\Inertia;
+use Symfony\Component\Console\Input\Input;
 
 class GameController extends Controller
 {
@@ -21,25 +23,31 @@ class GameController extends Controller
     public function index()
     {
 
-        $games = Game::all()->map(function ($game) {
-            if (is_null($game->image_url)) {
-                if (Image::where('name', ImageTypeEnum::Placeholder->name)->count() !== 0) {
-                    $game['image_url'] = Image::where('name', ImageTypeEnum::Placeholder->name)->first()->getFirstMediaUrl();
+        $games = Game::query()
+            ->when(Request::input('search'), function ($query, $search) {
+                $query->where('name', 'like', "%{$search}%");
+            })
+            ->get()
+            ->map(function ($game) {
+                if (is_null($game->image_url)) {
+                    if (Image::where('name', ImageTypeEnum::Placeholder->name)->count() !== 0) {
+                        $game['image_url'] = Image::where('name', ImageTypeEnum::Placeholder->name)->first()->getFirstMediaUrl();
+                    }
                 }
-            }
-            
-            $game['key_amount'] = $game->keys()->count();
-            $game['key_platforms'] = $game->keys()->get()->map(function ($key) {
-                return $key->platform->name;
-            })->toArray();
 
-            return $game;
-        });
+                $game['key_amount'] = $game->keys()->count();
+                $game['key_platforms'] = $game->keys()->get()->map(function ($key) {
+                    return $key->platform->name;
+                })->toArray();
+
+                return $game;
+            }); 
 
         return Inertia::render('Games/Index', [
+
             'games' => $games,
-            'test' => 1,
             //dd($games)
+            'filters' => Request::only(['search']),
         ]);
     }
 

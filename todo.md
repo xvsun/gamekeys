@@ -2,7 +2,6 @@
 - User Claim Seite
   - Oberfläche für User
   - Filterfunktion (nach Plattform)
-  - Suchfunktion (nach Game) https://laracasts.com/series/build-modern-laravel-apps-using-inertia-js/episodes/18
   - Key Wünsche einbauen / Wishlist?
 - Claim Funktion
   - Limit 3 pro Tag

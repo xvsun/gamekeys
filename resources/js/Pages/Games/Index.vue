@@ -1,7 +1,24 @@
 <script setup>
 import AppLayout from '@/Layouts/AppLayout.vue';
+import { ref,watch } from "vue";
+import {Inertia} from "@inertiajs/inertia";
 
-defineProps(['games']);
+let props = defineProps({
+    games: Object,
+    filters: Object,
+});
+
+let search = ref(props.filters.search);
+
+watch(search, value =>{
+    
+    Inertia.get('/games', {
+        search: value,
+    }, {
+        preserveState: true,
+        replace: true,
+    });
+}) 
 </script>
 
 <template>
@@ -11,9 +28,13 @@ defineProps(['games']);
                 Games
             </h2>
         </template>
-
+        
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+                <div class="flex justify-end mb-4">
+                    <input v-model="search" type="text" placeholder ="Search...">
+                    
+                </div>
                 <!-- <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg"> -->
                 <!-- Code -->
 
