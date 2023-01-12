@@ -6,6 +6,7 @@
     "license": "MIT",
     "require": {
         "php": "^8.0.2",
+        "archtechx/enums": "^0.3.1",
         "filament/filament": "^2.16",
         "filament/spatie-laravel-media-library-plugin": "^2.16",
         "guzzlehttp/guzzle": "^7.5",
