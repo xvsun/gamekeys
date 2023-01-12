@@ -6,7 +6,6 @@ use Illuminate\Support\Facades\Http;
 use App\Http\Requests\StoreGameRequest;
 use App\Http\Requests\UpdateGameRequest;
 use App\Http\Controllers\Log;
-use App\Jobs\GetGameImage;
 use App\Models\Game;
 use App\Models\Image;
 use Inertia\Inertia;
@@ -22,11 +21,6 @@ class GameController extends Controller
     {
 
         $games = Game::all()->map(function ($game) {
-
-            if (is_null($game->image_url)) {
-                GetGameImage::dispatch($game);
-            }
-
             if (is_null($game->image_url)) {
                 if (Image::where('name', 'placeholder_image')->count() !== 0) {
                     $game['image_url'] = Image::where('name', 'placeholder_image')->first()->getFirstMediaUrl();

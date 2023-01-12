@@ -40,6 +40,7 @@ class GameSeeder extends Seeder
             
         ];
 
-        $this->call(GeneralSeeder::class, true, ['class' => $class, 'fields' => $fields, 'data' => $data, 'hasRelationships' => false, 'addTimestamps' => true]);
+        // hasRelationships is on so the model observer works
+        $this->call(GeneralSeeder::class, true, ['class' => $class, 'fields' => $fields, 'data' => $data, 'hasRelationships' => true, 'addTimestamps' => true]);
     }
 }
