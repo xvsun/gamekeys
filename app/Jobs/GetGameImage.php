@@ -52,6 +52,8 @@ class GetGameImage implements ShouldQueue
             $data = $response->json()['data'];
 
             if (empty($response->json()['data'])) {
+                $this->fail($response->json());
+
                 // JSON output is empty
                 // $this->game->image_url = asset('storage/images/kein_Bild.png');
             } else {
@@ -70,6 +72,7 @@ class GetGameImage implements ShouldQueue
                     $data = $response->json()['data'];
                     $this->game->image_url = $data[$plain]['image'];
                 } else {
+                    $this->fail($response->json());
                     // Platzhalter Bild
                     // $this->game->image_url = asset('storage/images/kein_Bild.png');
                 }
