@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\ImageTypeEnum;
 use Illuminate\Support\Facades\Http;
 use App\Http\Requests\StoreGameRequest;
 use App\Http\Requests\UpdateGameRequest;
@@ -22,8 +23,8 @@ class GameController extends Controller
 
         $games = Game::all()->map(function ($game) {
             if (is_null($game->image_url)) {
-                if (Image::where('name', 'placeholder_image')->count() !== 0) {
-                    $game['image_url'] = Image::where('name', 'placeholder_image')->first()->getFirstMediaUrl();
+                if (Image::where('name', ImageTypeEnum::Placeholder->name)->count() !== 0) {
+                    $game['image_url'] = Image::where('name', ImageTypeEnum::Placeholder->name)->first()->getFirstMediaUrl();
                 }
             }
             
@@ -34,6 +35,7 @@ class GameController extends Controller
 
             return $game;
         });
+
         return Inertia::render('Games/Index', [
             'games' => $games,
             'test' => 1,

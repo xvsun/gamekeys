@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources;
 
+use App\Enums\ImageTypeEnum;
 use App\Filament\Resources\ImageResource\Pages;
 use App\Filament\Resources\ImageResource\RelationManagers;
 use App\Models\Image;
@@ -13,6 +14,9 @@ use Filament\Tables;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
+use Illuminate\Support\Facades\Log;
+use Livewire\Component;
+use PgSql\Lob;
 
 class ImageResource extends Resource
 {
@@ -24,9 +28,32 @@ class ImageResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('name')
+                Forms\Components\Select::make('name')
                     ->required()
-                    ->maxLength(255),
+                    ->options(function (Component $livewire, $record) {
+                        $displayOptions = [];
+                        $options = ImageTypeEnum::options();
+
+                        if (! $livewire instanceof Pages\CreateImage) {
+                            $displayOptions[$record->slug] = $record->slug;
+                        }
+
+                        $names = Image::all()->pluck('name');
+                        foreach ($options as $optionKey => $option) {
+                            if (! $livewire instanceof Pages\CreateImage) {
+                                if (! $names->contains($optionKey) || $record->name == $optionKey) {
+                                    $displayOptions[$optionKey] = $option;
+                                }
+                            } else {
+                                if (! $names->contains($optionKey)) {
+                                    $displayOptions[$optionKey] = $option;
+                                }
+                            }
+                        }
+
+                        return $displayOptions;
+                    })
+                    ->label('Name'),
                 SpatieMediaLibraryFileUpload::make('image'),
             ]);
     }
