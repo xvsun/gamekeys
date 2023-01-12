@@ -79,6 +79,8 @@ class GetGameImage implements ShouldQueue
             }
 
             $this->game->save();
+        } else {
+            $this->fail($response->json());
         }
     }
 }
