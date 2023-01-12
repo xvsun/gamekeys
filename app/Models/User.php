@@ -60,14 +60,17 @@ class User extends Authenticatable implements FilamentUser, HasAvatar
     protected $appends = [
         'profile_photo_url',
     ];
+
     public function getFilamentAvatarUrl(): ?string
     {
         return $this->avatar_url;
     }
+
     public function canAccessFilament(): bool
     {
         return str_ends_with($this->email, '@admin.admin') && $this->hasVerifiedEmail();
     }
+    
     public function keys()
     {
         return $this->hasMany(Key::class);

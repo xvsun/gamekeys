@@ -21,7 +21,7 @@ defineProps(['games']);
                     <div v-for="game, game_key in games" :key="game_key"
                         class="bg-white rounded-lg shadow-lg overflow-hidden space-y-2">
                         <div class="w-100 h-100 relative">
-                            <img v-bind:src="game.image_url" alt="">
+                            <img :src="game.image_url" alt="">
                             <div
                                 class="absolute top-0 left-0 m-2 bg-purple-300 w-8 h-8 rounded-full text-center align-middle">
                                 <div class="flex w-full h-full items-center justify-center">
