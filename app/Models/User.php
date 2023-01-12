@@ -71,11 +71,7 @@ class User extends Authenticatable implements FilamentUser, HasAvatar
 
     public function canAccessFilament(): bool
     {
-        if (App::environment(['local', 'staging'])) {
-            return (str_ends_with($this->email, '@admin.admin') && $this->hasVerifiedEmail()) || $this->can('access_filament');;
-        } else {
-            return $this->can('access_filament');
-        }
+        return $this->can('access_filament');
     }
 
     public function keys()
