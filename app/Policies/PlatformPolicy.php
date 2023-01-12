@@ -18,7 +18,7 @@ class PlatformPolicy
      */
     public function viewAny(User $user)
     {
-        return true;
+        return $user->can('view_any_platform');
     }
 
     /**
@@ -30,7 +30,7 @@ class PlatformPolicy
      */
     public function view(User $user, Platform $platform)
     {
-        return true;
+        return $user->can('view_platform');
     }
 
     /**
@@ -41,7 +41,7 @@ class PlatformPolicy
      */
     public function create(User $user)
     {
-        return true;
+        return $user->can('create_platform');
     }
 
     /**
@@ -53,7 +53,7 @@ class PlatformPolicy
      */
     public function update(User $user, Platform $platform)
     {
-        return true;
+        return $user->can('update_platform');
     }
 
     /**
@@ -65,7 +65,7 @@ class PlatformPolicy
      */
     public function delete(User $user, Platform $platform)
     {
-        return true;
+        return $user->can('delete_platform');
     }
 
     /**
@@ -77,7 +77,7 @@ class PlatformPolicy
      */
     public function restore(User $user, Platform $platform)
     {
-        return true;
+        return $user->can('restore_platform');
     }
 
     /**
@@ -89,6 +89,6 @@ class PlatformPolicy
      */
     public function forceDelete(User $user, Platform $platform)
     {
-        return true;
+        return $user->can('force_delete_platform');
     }
 }
