@@ -40,7 +40,7 @@ class GetGameImage implements ShouldQueue
     public function handle()
     {
         $plain = '';
-        $api_key = env('ITAD_API_KEY');
+        $api_key = config('services.itad.key');
         // get plain from isthereanydeal api
         $response = Http::get('https://api.isthereanydeal.com/v02/game/plain/?', [
             'key' => $api_key,
@@ -52,6 +52,8 @@ class GetGameImage implements ShouldQueue
             $data = $response->json()['data'];
 
             if (empty($response->json()['data'])) {
+                $this->fail($response->json());
+
                 // JSON output is empty
                 // $this->game->image_url = asset('storage/images/kein_Bild.png');
             } else {
@@ -70,12 +72,15 @@ class GetGameImage implements ShouldQueue
                     $data = $response->json()['data'];
                     $this->game->image_url = $data[$plain]['image'];
                 } else {
+                    $this->fail($response->json());
                     // Platzhalter Bild
                     // $this->game->image_url = asset('storage/images/kein_Bild.png');
                 }
             }
 
             $this->game->save();
+        } else {
+            $this->fail(print_r($response->json(), true));
         }
     }
 }
