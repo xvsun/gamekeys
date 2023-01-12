@@ -8,6 +8,7 @@ use App\Http\Requests\UpdateGameRequest;
 use App\Http\Controllers\Log;
 use App\Jobs\GetGameImage;
 use App\Models\Game;
+use App\Models\Image;
 use Inertia\Inertia;
 
 class GameController extends Controller
@@ -24,8 +25,10 @@ class GameController extends Controller
 
             if (is_null($game->image_url)) {
                 GetGameImage::dispatch($game);
+            }
 
-                // $this->getPicture($game);
+            if (is_null($game->image_url)) {
+                $game['image_url'] = Image::where('name', 'placeholder_image')->first()->getFirstMediaUrl();
             }
             
             $game['key_amount'] = $game->keys()->count();
