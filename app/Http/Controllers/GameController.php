@@ -28,7 +28,9 @@ class GameController extends Controller
             }
 
             if (is_null($game->image_url)) {
-                $game['image_url'] = Image::where('name', 'placeholder_image')->first()->getFirstMediaUrl();
+                if (Image::where('name', 'placeholder_image')->count() !== 0) {
+                    $game['image_url'] = Image::where('name', 'placeholder_image')->first()->getFirstMediaUrl();
+                }
             }
             
             $game['key_amount'] = $game->keys()->count();
