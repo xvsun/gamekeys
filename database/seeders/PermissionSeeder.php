@@ -34,6 +34,7 @@ class PermissionSeeder extends Seeder
             'game',
             'key',
             'platform',
+            'image',
         ];
 
         foreach ($cruds as $crud) {

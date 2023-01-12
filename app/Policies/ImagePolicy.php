@@ -18,8 +18,7 @@ class ImagePolicy
      */
     public function viewAny(User $user)
     {
-        //
-        return true;
+        return $user->can('view_any_image');
     }
 
     /**
@@ -31,8 +30,7 @@ class ImagePolicy
      */
     public function view(User $user, Image $image)
     {
-        //
-        return true;
+        return $user->can('view_image');
     }
 
     /**
@@ -43,8 +41,7 @@ class ImagePolicy
      */
     public function create(User $user)
     {
-        //
-        return true;
+        return $user->can('create_image');
     }
 
     /**
@@ -56,8 +53,7 @@ class ImagePolicy
      */
     public function update(User $user, Image $image)
     {
-        //
-        return true;
+        return $user->can('update_image');
     }
 
     /**
@@ -69,8 +65,7 @@ class ImagePolicy
      */
     public function delete(User $user, Image $image)
     {
-        //
-        return true;
+        return $user->can('delete_image');
     }
 
     /**
@@ -82,8 +77,7 @@ class ImagePolicy
      */
     public function restore(User $user, Image $image)
     {
-        //
-        return true;
+        return $user->can('restore_image');
     }
 
     /**
@@ -95,7 +89,6 @@ class ImagePolicy
      */
     public function forceDelete(User $user, Image $image)
     {
-        //
-        return true;
+        return $user->can('force_delete_image');
     }
 }
