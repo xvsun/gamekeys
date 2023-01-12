@@ -18,7 +18,7 @@ class KeyPolicy
      */
     public function viewAny(User $user)
     {
-        return true;
+        return $user->can('view_any_key');
     }
 
     /**
@@ -30,7 +30,7 @@ class KeyPolicy
      */
     public function view(User $user, Key $key)
     {
-        return true;
+        return $user->can('view_key');
     }
 
     /**
@@ -41,7 +41,7 @@ class KeyPolicy
      */
     public function create(User $user)
     {
-        return true;
+        return $user->can('create_key');
     }
 
     /**
@@ -53,7 +53,7 @@ class KeyPolicy
      */
     public function update(User $user, Key $key)
     {
-        return true;
+        return $user->can('update_key');
     }
 
     /**
@@ -65,7 +65,7 @@ class KeyPolicy
      */
     public function delete(User $user, Key $key)
     {
-        return true;
+        return $user->can('delete_key');
     }
 
     /**
@@ -77,7 +77,7 @@ class KeyPolicy
      */
     public function restore(User $user, Key $key)
     {
-        return true;
+        return $user->can('restore_key');
     }
 
     /**
@@ -89,6 +89,6 @@ class KeyPolicy
      */
     public function forceDelete(User $user, Key $key)
     {
-        return true;
+        return $user->can('force_delete_key');
     }
 }
