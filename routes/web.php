@@ -21,6 +21,7 @@ use Inertia\Inertia;
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/', DashboardController::class);
     Route::get('/dashboard', DashboardController::class)->name('dashboard');
+    
     Route::resource('games', GameController::class)
-        ->only(['index']);
+        ->only(['index', 'show']);
 });
