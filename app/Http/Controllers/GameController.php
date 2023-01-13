@@ -80,6 +80,8 @@ class GameController extends Controller
      */
     public function show(Game $game)
     {
+        $game['keys'] = $game->keys()->with('platform')->get()->setHidden(['key'])->toArray();
+
         return Inertia::render('Games/Show', [
             'game' => $game,
         ]);
