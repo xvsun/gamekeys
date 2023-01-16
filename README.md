@@ -69,6 +69,15 @@ sail artisan db:seed --class DevelopmentSeeder
 
 Follow the installation steps for development. Make sure to build the npm packages using `npm run build` and **do not** execute the `DevelopmentSeeder`, just the normal seeders using `php artisan db:seed`.
 
+## Contributors
+
+Thank you for all the help [contributors](https://github.com/xvsun/gamekeys/graphs/contributors)!
+
+<a href="https://github.com/xvsun/gamekeys/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=xvsun/gamekeys" />
+</a>
+
+Made with [contrib.rocks](https://contrib.rocks).
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for more details.
