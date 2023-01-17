@@ -3,7 +3,6 @@
 namespace App\Console\Commands;
 
 use App\Models\User;
-use Carbon\Carbon;
 use Illuminate\Console\Command;
 use Spatie\Permission\Models\Role;
 
@@ -55,7 +54,7 @@ class GiveRoleToUser extends Command
         $user->assignRole($role);
 
         $user->save();
-        
+
         $this->info("The role (id: {$role->id}, name: {$role->name}) has been assigned to the user (id: {$user->id}, email: {$user->email})!");
 
         return Command::SUCCESS;

@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use App\Models\Platform;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Carbon;
 
@@ -36,7 +35,7 @@ class PlatformSeeder extends Seeder
                 'name' => 'Ubisoft Connect',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
-            ]
+            ],
         ];
 
         foreach ($data as $entry) {

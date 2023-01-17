@@ -4,19 +4,14 @@ namespace App\Filament\Resources;
 
 use App\Enums\ImageTypeEnum;
 use App\Filament\Resources\ImageResource\Pages;
-use App\Filament\Resources\ImageResource\RelationManagers;
 use App\Models\Image;
 use Filament\Forms;
+use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
-use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
-use Illuminate\Support\Facades\Log;
 use Livewire\Component;
-use PgSql\Lob;
 
 class ImageResource extends Resource
 {
@@ -62,7 +57,7 @@ class ImageResource extends Resource
                     ->dateTime(),
                 Tables\Columns\TextColumn::make('updated_at')
                     ->dateTime(),
-                
+
             ])
             ->filters([
                 //
@@ -75,14 +70,14 @@ class ImageResource extends Resource
                 Tables\Actions\DeleteBulkAction::make(),
             ]);
     }
-    
+
     public static function getRelations(): array
     {
         return [
             //
         ];
     }
-    
+
     public static function getPages(): array
     {
         return [
@@ -91,5 +86,5 @@ class ImageResource extends Resource
             'view' => Pages\ViewImage::route('/{record}'),
             'edit' => Pages\EditImage::route('/{record}/edit'),
         ];
-    }    
+    }
 }

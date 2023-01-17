@@ -3,15 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Enums\ImageTypeEnum;
-use Illuminate\Support\Facades\Http;
 use App\Http\Requests\StoreGameRequest;
 use App\Http\Requests\UpdateGameRequest;
-use App\Http\Controllers\Log;
 use App\Models\Game;
 use App\Models\Image;
 use Illuminate\Support\Facades\Request;
 use Inertia\Inertia;
-use Symfony\Component\Console\Input\Input;
 
 class GameController extends Controller
 {
@@ -22,7 +19,6 @@ class GameController extends Controller
      */
     public function index()
     {
-
         $games = Game::query()
             ->when(Request::input('search'), function ($query, $search) {
                 $query->where('name', 'like', "%{$search}%");
@@ -41,7 +37,7 @@ class GameController extends Controller
                 })->toArray();
 
                 return $game;
-            }); 
+            });
 
         return Inertia::render('Games/Index', [
 

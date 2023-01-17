@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Support\Concerns;
 
 trait InteractsWithBanner

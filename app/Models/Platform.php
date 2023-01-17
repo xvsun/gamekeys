@@ -11,8 +11,9 @@ class Platform extends Model
 
     protected $fillable = [
         'name',
-        'link'
+        'link',
     ];
+
     public function keys()
     {
         return $this->hasMany(Key::class);

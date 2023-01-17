@@ -4,7 +4,6 @@ namespace App\Jobs;
 
 use App\Models\Game;
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldBeUnique;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
@@ -54,8 +53,8 @@ class GetGameImage implements ShouldQueue
             if (empty($response->json()['data'])) {
                 $this->fail($response->json());
 
-                // JSON output is empty
-                // $this->game->image_url = asset('storage/images/kein_Bild.png');
+            // JSON output is empty
+            // $this->game->image_url = asset('storage/images/kein_Bild.png');
             } else {
                 // JSON output is not empty
                 $plain = $data['plain'];

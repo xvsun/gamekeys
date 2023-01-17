@@ -11,6 +11,7 @@ class Game extends Model implements HasMedia
 {
     use HasFactory;
     use InteractsWithMedia;
+
     /**
      * The attributes that are mass assignable.
      *
@@ -20,7 +21,7 @@ class Game extends Model implements HasMedia
         'name',
         'image_url',
     ];
-    
+
     public function keys()
     {
         return $this->hasMany(Key::class);
