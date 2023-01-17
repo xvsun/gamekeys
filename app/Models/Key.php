@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Support\Concerns\InteractsWithBanner;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
@@ -9,6 +10,8 @@ use Illuminate\Support\Facades\Auth;
 class Key extends Model
 {
     use HasFactory;
+    use InteractsWithBanner;
+
     protected $fillable = [
         'key',
         'game_id',
@@ -18,6 +21,11 @@ class Key extends Model
     public function canBeClaimed() 
     {
         // TODO Logik für das Key claimen, timeout, key hat kein anderer user, etc.
+        if (isset($this->user)) {
+            $this->banner('This key is already claimed', 'danger');
+            return false;
+        }
+
         return true;
     }
 
@@ -28,6 +36,7 @@ class Key extends Model
             return;
         }
 
+        
         $this->user()->associate(Auth::user());
 
         $this->save();

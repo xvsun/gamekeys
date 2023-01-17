@@ -4,9 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\Key;
 use Illuminate\Http\Request;
+use App\Support\Concerns\InteractsWithBanner;
 
 class ClaimKeyController extends Controller
 {
+    use InteractsWithBanner;
+
     /**
      * Handle the incoming request.
      *
@@ -15,8 +18,11 @@ class ClaimKeyController extends Controller
      */
     public function __invoke(Request $request, Key $key)
     {
-        if ($key->canBeClaimed()) {
-            $key->claim();
+        if (!$key->canBeClaimed()) {
+            return;
         }
+        
+        $key->claim();
+        $this->banner('Key successfully claimed.');
     }
 }
