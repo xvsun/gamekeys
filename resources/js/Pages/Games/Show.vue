@@ -1,13 +1,13 @@
 <script setup>
 import AppLayout from '@/Layouts/AppLayout.vue';
-import {Inertia} from "@inertiajs/inertia";
+import { router } from "@inertiajs/vue3";
 
 let props = defineProps({
     game: Object,
 });
 
 let claimKey = ((id) => {
-    Inertia.post(route('keys.claim', id));
+    router.post(route('keys.claim', id));
 });
 </script>
 
