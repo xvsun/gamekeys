@@ -6,7 +6,6 @@ use App\Models\Game;
 use App\Models\Key;
 use App\Models\Platform;
 use App\Models\User;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class KeySeeder extends Seeder

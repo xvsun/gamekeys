@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Enums;
 
 use ArchTech\Enums\Names;

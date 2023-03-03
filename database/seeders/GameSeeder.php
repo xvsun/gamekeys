@@ -3,8 +3,6 @@
 namespace Database\Seeders;
 
 use App\Models\Game;
-use App\Models\Platform;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class GameSeeder extends Seeder
@@ -27,7 +25,7 @@ class GameSeeder extends Seeder
             ],
             [
                 'name' => '1gutesGame',
-            ], 
+            ],
             [
                 'name' => 'Starbound',
             ],
@@ -37,7 +35,7 @@ class GameSeeder extends Seeder
             [
                 'name' => 'Cyberpunk 2077',
             ],
-            
+
         ];
 
         // hasRelationships is on so the model observer works

@@ -1,8 +1,13 @@
 <script setup>
 import AppLayout from '@/Layouts/AppLayout.vue';
+import {Inertia} from "@inertiajs/inertia";
 
 let props = defineProps({
     game: Object,
+});
+
+let claimKey = ((id) => {
+    Inertia.post(route('keys.claim', id));
 });
 </script>
 
@@ -18,6 +23,20 @@ let props = defineProps({
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 
                 {{ game }}
+
+                <img :src="game.image_url" alt="">
+
+                <div class="">
+                    Keys
+
+                    <div class="grid grid-cols-1">
+                        <div v-for="key, key_key in game.keys" :key="key_key" class="flex flex-row justify-between">
+                            <span>{{ game.name }}</span>
+                            <span>{{ key.platform.name }}</span>
+                            <button @click="claimKey(key.id)">Claim</button>
+                        </div>
+                    </div>
+                </div>
 
             </div>
         </div>

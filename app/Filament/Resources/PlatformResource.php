@@ -3,15 +3,12 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\PlatformResource\Pages;
-use App\Filament\Resources\PlatformResource\RelationManagers;
 use App\Models\Platform;
 use Filament\Forms;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class PlatformResource extends Resource
 {
@@ -53,14 +50,14 @@ class PlatformResource extends Resource
                 Tables\Actions\DeleteBulkAction::make(),
             ]);
     }
-    
+
     public static function getRelations(): array
     {
         return [
             //
         ];
     }
-    
+
     public static function getPages(): array
     {
         return [
@@ -69,5 +66,5 @@ class PlatformResource extends Resource
             'view' => Pages\ViewPlatform::route('/{record}'),
             'edit' => Pages\EditPlatform::route('/{record}/edit'),
         ];
-    }    
+    }
 }

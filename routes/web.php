@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ClaimKeyController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\GameController;
 use Illuminate\Foundation\Application;
@@ -22,4 +23,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::resource('games', GameController::class)
         ->only(['index', 'show']);
+
+    Route::post('/keys/{key}/claim', ClaimKeyController::class)->name('keys.claim');
 });

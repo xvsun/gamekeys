@@ -2,8 +2,8 @@
 
 namespace App\Observers;
 
-use App\Models\Game;
 use App\Jobs\GetGameImage;
+use App\Models\Game;
 
 class GameObserver
 {
@@ -14,12 +14,12 @@ class GameObserver
      * @return void
      */
     public function created(Game $game)
-    {   
+    {
         if (is_null($game->image_url)) {
             GetGameImage::dispatch($game);
         }
     }
-    
+
     /**
      * Handle the Game "updated" event.
      *
