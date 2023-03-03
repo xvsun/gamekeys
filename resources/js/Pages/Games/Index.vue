@@ -1,7 +1,7 @@
 <script setup>
 import AppLayout from '@/Layouts/AppLayout.vue';
 import { ref, watch } from "vue";
-import {Inertia} from "@inertiajs/inertia";
+import { router } from "@inertiajs/vue3";
 import TextInput from '@/Components/TextInput.vue';
 import debounce from 'lodash/debounce';
 
@@ -15,14 +15,14 @@ let search = ref(props.filters.search);
 // watch, watches the ref and executes the throttle function everytime title changes
 // debounce only makes the function execute once, after the value (300ms) has passed
 watch(search, debounce(function (value) { 
-    Inertia.get('/games', { search: value }, {
+    router.get('/games', { search: value }, {
         preserveState: true,
         replace: true, // replace the search history so there is no history entry for each keystroke
     });
 }, 300));
 
 const handleGameClick = ((id) => {
-    Inertia.visit(route('games.show', id));
+    router.visit(route('games.show', id));
 });
 </script>
 
