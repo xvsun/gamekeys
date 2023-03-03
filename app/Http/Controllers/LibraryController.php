@@ -15,7 +15,7 @@ class LibraryController extends Controller
      */
     public function __invoke(Request $request)
     {
-        return- Inertia::render('Library', [
+        return Inertia::render('Library', [
             //
         ]);
     }
