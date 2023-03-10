@@ -1,16 +1,13 @@
 # TODO
 - User Claim Seite
-  - Oberfläche für User
   - Filterfunktion (nach Plattform)
   - Key Wünsche einbauen / Wishlist?
 - Claim Funktion
   - Limit 3 pro Tag
-  - Claim Button
   - User kann Key wieder freigeben
   - User hat ne Liste an geclaimten Keys
+  - Liste von Keys hat Link zur Plattform zum einlösen?
   - wenn User gelöscht - Keys wieder freigeben
   - Notification in Discord
   - Key mit Einlösezeitraum
   - Verlinkung zu istheranydeal
-- Game
-  - Bilder und Beschreibung, Link zum Game? via isthereanydeal
